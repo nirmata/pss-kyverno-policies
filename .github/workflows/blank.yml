@@ -62,3 +62,8 @@ jobs:
           set -e
           kubectl create -f https://github.com/nirmata/kyverno/raw/main/config/install-latest-testing.yaml 
           sleep 200
+      - name: Install Kyverno Pod Security Enforce policies
+        run: |
+          set -
+          kubectl create -k https://github.com/nirmata/kyverno-policies/pod-security/enforce
+          sleep 30          
