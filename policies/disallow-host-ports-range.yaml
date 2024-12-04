@@ -39,8 +39,8 @@ spec:
             all:
             - key: "{{ request.object.spec.[ephemeralContainers, initContainers, containers][].ports[].hostPort }}"
               operator: AnyNotIn
-              value: 1-65535
-            - key: "{{ request.object.spec.[ephemeralContainers, initContainers, containers][].ports[].hostPort }}"
-              operator: AnyNotIn
-              value:
-              - 0
+              value: 0-65535
+            # - key: "{{ request.object.spec.[ephemeralContainers, initContainers, containers][].ports[].hostPort }}"
+            #   operator: AnyNotIn
+            #   value:
+            #   - 0
