@@ -34,13 +34,14 @@ spec:
       validate:
         message: >-
           The only permitted hostPorts are in the range 0-65535.
-        deny:
-          conditions:
-            all:
-            - key: "{{ request.object.spec.[ephemeralContainers, initContainers, containers][].ports[].hostPort }}"
-              operator: AnyNotIn
-              value: 0-65535
-            # - key: "{{ request.object.spec.[ephemeralContainers, initContainers, containers][].ports[].hostPort }}"
-            #   operator: AnyNotIn
-            #   value:
-            #   - 0
+        pattern:
+          spec:
+            =(ephemeralContainers):
+              - =(ports):
+                  - =(hostPort): 0-65535
+            =(initContainers):
+              - =(ports):
+                  - =(hostPort): 0-65535
+            containers:
+              - =(ports):
+                  - =(hostPort): 0-65535
