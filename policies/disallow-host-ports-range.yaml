@@ -33,7 +33,7 @@ spec:
           value: DELETE
       validate:
         message: >-
-          The only permitted hostPorts are in the range 5000-6000 or 0.
+          The only permitted hostPorts are in the range 0-65535.
         deny:
           conditions:
             all:
